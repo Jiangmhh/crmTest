@@ -1,0 +1,50 @@
+常见命名规范 标签id
+add/create:跳转到添加页，或者打开添加操作的模糊窗口
+save:执行添加操作
+edit:跳转到修改页，或者打开修改操作的模糊窗口
+update:执行修改操作
+get:执行查询操作 find/select/query...
+特殊操作 Login等
+
+$.ajax({
+    url :"workbench/activity/user/delete.do",
+    data : {
+
+    },
+    type :"",
+    dataType : "json",
+    success : function(data){
+
+    }
+})
+
+String createTime = DateTimeUtil.getSysTime();
+String createBy = ((User)request.getSession().getAttribute("user")).getName();
+
+if(!e.isPropagationStopped()){
+}
+e.stopPropagation()
+
+// 1.操作后停留在当前页  2.操作后维持已经设置好的每页展现的记录数
+pageList($("#activityPage").bs_pagination('getOption', 'currentPage')
+		,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
+
+// 分页方法
+$("#activityPage").bs_pagination({
+					currentPage: pageNo, // 页码
+					rowsPerPage: pageSize, // 每页显示的记录条数
+					maxRowsPerPage: 20, // 每页最多显示的记录条数
+					totalPages: totalPages, // 总页数
+					totalRows: data.total, // 总记录条数
+
+					visiblePageLinks: 3, // 显示几个卡片
+
+					showGoToPage: true,
+					showRowsPerPage: true,
+					showRowsInfo: true,
+					showRowsDefaultInfo: true,
+
+					onChangePage : function(event, data){
+						pageList(data.currentPage , data.rowsPerPage);
+					}
+				});

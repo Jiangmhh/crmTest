@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jiangmh.demo.crm.workbench.dao.ClueActivityRelationDao">
+    <delete id="deleteRelationById">
+        delete from tbl_clue_activity_relation where id = #{id}
+    </delete>
+
+    <insert id="bundActivity" parameterType="list">
+        insert into tbl_clue_activity_relation(
+        id,
+        clueId,
+        activityId
+        )
+        values
+        <foreach collection="list" separator="," item="item">
+            (#{item.id},#{item.clueId},#{item.activityId})
+        </foreach>
+
+    </insert>
+    <!--
+      表示本次迭代获取的元素，若collection为List、Set或者数组，则表示其中的元素；
+      若collection为map，则代表key-value的value，该参数为必选
+    -->
+
+    <select id="getListByCId" resultType="ClueActivityRelation">
+        select * from tbl_clue_activity_relation where clueId = #{clueId}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
